@@ -29,6 +29,7 @@ const People = () => {
     } else {
       navigate("/", { replace: true });
     }
+    // eslint-disable-next-line
   }, [stateChanged]);
 
   const removePerson = (id) => {
