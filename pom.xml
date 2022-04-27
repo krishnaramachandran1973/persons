@@ -99,7 +99,7 @@
 								<include>**</include>
 							</includes>
 							<excludes>
-								<exclude>node</exclude>
+								<exclude>node*</exclude>
 							</excludes>
 						</fileset>
 					</filesets>
