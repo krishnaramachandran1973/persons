@@ -35,6 +35,8 @@ public class AppUser implements UserDetails {
 	private Long id;
 	private String username;
 	private String password;
+	private String email;
+	
 
 	@EqualsAndHashCode.Exclude
 	// @ToString.Exclude

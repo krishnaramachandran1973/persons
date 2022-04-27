@@ -1,7 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userLoggedOut } from "./features/authentication/loginSlice";
 
 const NavBar = () => {
+  const { isLoggedIn } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
@@ -14,16 +19,19 @@ const NavBar = () => {
             <Link className="nav-link" to="/people">
               People
             </Link>
-            <a
-              className="nav-link"
-              href="#"
-              onClick={() => {
-                localStorage.removeItem("jwt");
-                navigate("/", { replace: true });
-              }}
-            >
-              Logout
-            </a>
+            {isLoggedIn && (
+              <Link
+                to=""
+                className="nav-link"
+                onClick={() => {
+                  localStorage.removeItem("jwt");
+                  dispatch(userLoggedOut());
+                  navigate("/", { replace: true });
+                }}
+              >
+                Logout
+              </Link>
+            )}
           </div>
         </div>
       </div>

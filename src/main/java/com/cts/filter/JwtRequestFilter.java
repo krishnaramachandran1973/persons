@@ -35,6 +35,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		if (authHeader != null && authHeader.startsWith("Bearer ")) {
 			log.info("User has submitted a token");
 			String token = authHeader.substring(7);
+			
+			jwtUtil.validateJwtToken(token);
+
 			String username = jwtUtil.extractUsername(token);
 			log.info("Extracted usename from token is {}", username);
 			if (username != null) {
